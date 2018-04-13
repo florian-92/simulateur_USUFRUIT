@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+</head>
+<body>
+<div id="app">
+    <!-- comment pour les messages de succes sauf que la on en a beaucoup donc on crée un composant-->
+    <message type="succes" :message="message"></message>
+    <counter></counter>
+    <counter :start="3"></counter>
+</div>
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th scope="col">Nom de la SCPI</th>
+        <th scope="col">Durée du démembrement (nombre d'année)</th>
+        <th scope="col">Prix par part (en pleine propriété)</th>
+        <th scope="col">Montant global d'investissement</th>
+        <th scope="col">Montant en nue-propriété (€)</th>
+        <th scope="col">Clé de répartition nue propriété</th>
+        <th scope="col">Clé de répartition usufruit</th>
+        <th scope="col">Montant en Usufruit</th>
+        <th scope="col">Nombre de parts</th>
+        <th scope="col">Souscription divisible</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+    </tr>
+    <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+    </tr>
+    <tr>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+    </tr>
+    </tbody>
+</table>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+<script>
+
+    /*  let message = {
+          props: {
+              type:{type: String, default:'succes'},
+              message: String
+          },
+          template: '<div class="message" :class="type">{{message}}</div>'
+
+
+      } */
+
+    let counter = {
+
+        data: function() {
+            return {
+                count: 0
+            }
+        },
+
+        props:{
+            start: {type: Number, default: 0}
+        },
+
+
+        methods: {
+            increment: function () {
+                this.count ++
+            }
+        },
+
+        mounted: function () {
+            this.count = this.start
+        },
+
+        template:
+        '<button @click="increment">{{count}}</button>' +
+        '</div>'
+    }
+
+    Vue.component('message', {
+            props:['type','message'], // definir ce que accepte le composant, per
+            template: '<div class="message" :class="type">{{message}}</div>'
+        }
+    )
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            message: 'Wsh alors'
+        },
+
+        /* components: { message } */
+        components: {counter}
+    })
+</script>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
