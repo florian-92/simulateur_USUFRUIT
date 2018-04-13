@@ -10,13 +10,16 @@
 
     <title>Hello, world!</title>
 </head>
+<style>
+    th {
+        text-align: center!important;
+    }
+</style>
 <body>
 <div id="app">
     <!-- comment pour les messages de succes sauf que la on en a beaucoup donc on crée un composant-->
-    <message type="succes" :message="message"></message>
-    <counter></counter>
-    <counter :start="3"></counter>
-</div>
+
+
 
 <table class="table table-bordered">
     <thead>
@@ -24,10 +27,10 @@
         <th scope="col">Nom de la SCPI</th>
         <th scope="col">Durée du démembrement (nombre d'année)</th>
         <th scope="col">Prix par part (en pleine propriété)</th>
-        <th scope="col">Montant global d'investissement</th>
-        <th scope="col">Montant en nue-propriété (€)</th>
+        <th scope="col">Montant global d'investissement</th> <!-- lui -->
+        <th scope="col">Montant en nue-propriété (€)</th> <!-- lui -->
         <th scope="col">Clé de répartition nue propriété</th>
-        <th scope="col">Clé de répartition usufruit</th>
+        <th scope="col">Clé de répartition usufruit</th><!-- lui -->
         <th scope="col">Montant en Usufruit</th>
         <th scope="col">Nombre de parts</th>
         <th scope="col">Souscription divisible</th>
@@ -35,24 +38,55 @@
     </thead>
     <tbody>
     <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+        <td><input class="form-control" v-model="nom_Scpi" type="text" placeholder="Default input"></td>
+        <td><input class="form-control" v-model="duree_Demembrement" type="text" placeholder="Default input"></td>
+        <td><input class="form-control" v-model="prix_Part" type="text" placeholder="Default input"></td>
+        <td>{{montant_Global_Investissement = prix_Part * nombre_Parts}}</td><!-- lui -->
+        <td>{{montant_Nue_Propriete = montant_Global_Investissement * cle_Repartition_Nue_Propriete }}</td><!-- lui -->
+        <td><input class="form-control" v-model="cle_Repartition_Nue_Propriete" type="text" placeholder="Default input"></td>
+        <td><input class="form-control" v-model="cle_Repartition_usufruit" type="text" placeholder="Default input"></td>
+        <td>{{montant_Usufruit = cle_Repartition_usufruit * montant_Global_Investissement }}</td><!-- lui -->
+        <td><input class="form-control" v-model="nombre_Parts" type="text" placeholder="Default input"></td>
+        <td><input class="form-control" v-model="souscription_Divisible" type="text" placeholder="Default input"></td>
+    </tr>
+
+
+    <tbody>
+    <thead>
+    <tr>
+        <th scope="col">Année</th>
+        <th scope="col">TDVM Prévisionnel</th>
+        <th scope="col">Dividende Annuel</th>
+        <th scope="col">Soit un acompte trimestriel</th>
+        <th scope="col">Soit un dividende annuel par part de </th>
+        <th scope="col">Flux avant fiscalité</th>
+        <th scope="col">Amortissement usufruit</th>
+        <th scope="col">IS à payer</th>
+        <th scope="col">Flux après fiscalité</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr>
+        <th scope="row">0</th> <!-- faire un ++ -->
+        <td>{{montant_Usufruit_negatif = - montant_Usufruit}}</td>
+        <td></td><!-- a revoir quand on commencer les autres tableau -->
     </tr>
     <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
+        <th scope="row">1</th> <!-- faire un ++ -->
+        <td>{{tdvm_Previsionnel = hypothese_Medium}}</td>
+        <td>{{dividende_Annuel = (tdvm_Previsionnel * montant_Global_Investissement) / 100 }}</td>
+        <td>{{acompte_Trimestriel = dividende_Annuel/4/nombre_Parts }}</td>
+        <td>{{dividende_Annuel_Part = acompte_Trimestriel * 4 }}</td>
+        <td>{{flux_Avant_Fiscalite = dividende_Annuel }}</td>
+        <td>{{amortissement_Usufruit = montant_Usufruit_negatif / duree_Demembrement}}</td>
+        <td>{{is_A_Payer =  - ((flux_Avant_Fiscalite + amortissement_Usufruit ) * dividende_Annuel)}}</td>
+        <td>{{flux_Apres_Fiscalite = is_A_Payer + flux_Avant_Fiscalite}}</td>
     </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
-    </tr>
-    </tbody>
+    <tbody>
+
 </table>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
 <script>
 
@@ -66,7 +100,7 @@
 
       } */
 
-    let counter = {
+   /* let counter = {
 
         data: function() {
             return {
@@ -93,20 +127,46 @@
         '<button @click="increment">{{count}}</button>' +
         '</div>'
     }
+*/
 
-    Vue.component('message', {
-            props:['type','message'], // definir ce que accepte le composant, per
-            template: '<div class="message" :class="type">{{message}}</div>'
-        }
-    )
     let vm = new Vue({
         el: '#app',
         data: {
-            message: 'Wsh alors'
+            nom_Scpi: 'Wsh alors',
+            duree_Demembrement: 0,
+            prix_Part: 0,
+            montant_Global_Investissement: 0,
+            montant_Nue_Propriete: 0,
+            cle_Repartition_Nue_Propriete: 0,
+            cle_Repartition_usufruit: 0,
+            montant_Usufruit: 0,
+            montant_Usufruit_negatif: '',
+            nombre_Parts: 0,
+            souscription_Divisible: 0,
+            annee: 0,
+            tdvm_Previsionnel: 0,
+            dividende_Annuel: 0,
+            acompte_Trimestriel: 0,
+            dividende_Annuel_Part: 0,
+            flux_Avant_Fiscalite: 0,
+            amortissement_Usufruit: 0,
+            is_A_Payer:0,
+            flux_Apres_Fiscalite:0,
+            hypothese_Medium:4.50,
+
         },
 
+        filters: {
+            pourcentage: function (valeur, decimales) {
+                if (decimales === undefined) {
+                    decimales = 2;
+                }
+                return Math.round(valeur * Math.pow(10, decimales)) / Math.pow(10, decimales) + ' %';
+            }
+
+        }
+
         /* components: { message } */
-        components: {counter}
     })
 </script>
 <!-- Optional JavaScript -->
