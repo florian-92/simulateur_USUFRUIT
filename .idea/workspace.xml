@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="94a9dc62-3412-456a-8aac-2416a326e3fe" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/V1_usufruit.html" beforeDir="false" afterPath="$PROJECT_DIR$/V1_usufruit.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,8 +17,8 @@
       <file leaf-file-name="V1_usufruit.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/V1_usufruit.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="207" column="33" lean-forward="true" selection-start-line="207" selection-start-column="33" selection-end-line="207" selection-end-column="33" />
+            <state relative-caret-position="314">
+              <caret line="261" column="12" selection-start-line="261" selection-start-column="12" selection-end-line="261" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -127,12 +128,12 @@
       <option name="presentableId" value="Default" />
       <updated>1523608029723</updated>
       <workItem from="1523608030982" duration="12148000" />
-      <workItem from="1523864736940" duration="8872000" />
+      <workItem from="1523864736940" duration="9456000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21020000" />
+    <option name="totallyTimeSpent" value="21604000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -143,7 +144,7 @@
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32965517" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32965517" />
       <window_info anchor="right" id="Remote Host" order="3" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2536349" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
@@ -199,8 +200,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/V1_usufruit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="207" column="33" lean-forward="true" selection-start-line="207" selection-start-column="33" selection-end-line="207" selection-end-column="33" />
+        <state relative-caret-position="314">
+          <caret line="261" column="12" selection-start-line="261" selection-start-column="12" selection-end-line="261" selection-end-column="12" />
         </state>
       </provider>
     </entry>

@@ -31,8 +31,8 @@
             <th scope="col">Prix par part (en pleine propriété) (€)</th>
             <th scope="col">Montant global d'investissement (€)</th> <!-- lui -->
             <th scope="col">Montant en nue-propriété (€)</th> <!-- lui -->
-            <th scope="col">Clé de répartition nue propriété (€)</th>
-            <th scope="col">Clé de répartition usufruit (€)</th><!-- lui -->
+            <th scope="col">Clé de répartition nue propriété (%)</th>
+            <th scope="col">Clé de répartition usufruit (%)</th><!-- lui -->
             <th scope="col">Montant en Usufruit (€)</th>
             <th scope="col">Nombre de parts (€)</th>
             <th scope="col">Souscription divisible (€)</th>
@@ -43,13 +43,13 @@
             <td><input class="form-control" v-model="nom_Scpi" type="text" placeholder="Default input"></td>
             <td><input class="form-control" v-model.lazy.number="duree_Demembrement" type="text" placeholder="Default input"></td>
             <td><input class="form-control" v-model.number="prix_Part" type="text" placeholder="Default input"></td>
-            <td>{{montant_Global_Investissement = prix_Part * nombre_Parts }}</td><!-- lui -->
-            <td>{{montant_Nue_Propriete = montant_Global_Investissement * cle_Repartition_Nue_Propriete / 100}}</td>
+            <td>{{montant_Global_Investissement = prix_Part * nombre_Parts | deux_chiffres_apres_virgules}}</td><!-- lui -->
+            <td>{{montant_Nue_Propriete = montant_Global_Investissement * cle_Repartition_Nue_Propriete / 100 | deux_chiffres_apres_virgules}}</td>
             <!-- lui -->
             <td>{{cle_Repartition_Nue_Propriete = 100 - cle_Repartition_usufruit}} %</td>
             <td><input class="form-control" v-model.number="cle_Repartition_usufruit " type="text" placeholder="Default input">
             </td>
-            <td>{{montant_Usufruit = cle_Repartition_usufruit * montant_Global_Investissement /100}}</td><!-- lui -->
+            <td>{{montant_Usufruit = cle_Repartition_usufruit * montant_Global_Investissement /100 | deux_chiffres_apres_virgules}}</td><!-- lui -->
             <td><input class="form-control" v-model.number="nombre_Parts" type="text" placeholder="Default input"></td>
             <td><input class="form-control" v-model.number="souscription_Divisible" type="text" placeholder="Default input">
             </td>
@@ -74,7 +74,7 @@
         <tbody>
         <tr>
             <th scope="row">0</th> <!-- faire un ++ -->
-            <td>{{montant_Usufruit_negatif = - montant_Usufruit}}</td>
+            <td>{{montant_Usufruit_negatif = - montant_Usufruit | deux_chiffres_apres_virgules}}</td>
             <td></td><!-- a revoir quand on commencer les autres tableau -->
         </tr>
         <tr v-for="n in duree_Demembrement">
@@ -84,8 +84,8 @@
             <td>{{dividende_Annuel = (tdvm_Previsionnel * montant_Global_Investissement / 100)}}</td>
             <td>{{acompte_Trimestriel = dividende_Annuel/4/nombre_Parts | deux_chiffres_apres_virgules}}</td>
             <td>{{dividende_Annuel_Part = acompte_Trimestriel * 4 | deux_chiffres_apres_virgules}}</td>
-            <td>{{flux_Avant_Fiscalite = dividende_Annuel }}</td>
-            <td>{{amortissement_Usufruit = montant_Usufruit_negatif / duree_Demembrement }}</td>
+            <td>{{flux_Avant_Fiscalite = dividende_Annuel | deux_chiffres_apres_virgules}}</td>
+            <td>{{amortissement_Usufruit = montant_Usufruit_negatif / duree_Demembrement | deux_chiffres_apres_virgules}}</td>
             <td>{{is_A_Payer = -(flux_Avant_Fiscalite + amortissement_Usufruit ) * 0.3333 | deux_chiffres_apres_virgules}}</td>
             <td>{{flux_Apres_Fiscalite = flux_Avant_Fiscalite + is_A_Payer | deux_chiffres_apres_virgules}}</td>
         </tr>
@@ -258,6 +258,8 @@
             deux_chiffres_apres_virgules: function (valeur) {
                 return valeur.toFixed(2)
             },
+
+
 
 
 
