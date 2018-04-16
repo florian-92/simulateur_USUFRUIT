@@ -1,0 +1,22 @@
+{
+  "name": "simulateur_usufruit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/florian-92/simulateur_USUFRUIT.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/florian-92/simulateur_USUFRUIT/issues"
+  },
+  "homepage": "https://github.com/florian-92/simulateur_USUFRUIT#readme",
+  "dependencies": {
+    "financejs": "^4.1.0"
+  }
+}
