@@ -6,92 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <title>Hello, world!</title>
+    <script src="essamjoubori-finance.js-10df6b8/finance.js"></script>
 </head>
 <style>
     th {
-        text-align: center!important;
+        text-align: center !important;
     }
 </style>
 <body>
-<div id="app">
+
+<div id="app" class="row">
     <!-- comment pour les messages de succes sauf que la on en a beaucoup donc on crée un composant-->
 
-
-
-<table class="table table-bordered">
-    <thead>
-    <tr>
-        <th scope="col">Nom de la SCPI</th>
-        <th scope="col">Durée du démembrement (nombre d'année)</th>
-        <th scope="col">Prix par part (en pleine propriété)</th>
-        <th scope="col">Montant global d'investissement</th> <!-- lui -->
-        <th scope="col">Montant en nue-propriété (€)</th> <!-- lui -->
-        <th scope="col">Clé de répartition nue propriété</th>
-        <th scope="col">Clé de répartition usufruit</th><!-- lui -->
-        <th scope="col">Montant en Usufruit</th>
-        <th scope="col">Nombre de parts</th>
-        <th scope="col">Souscription divisible</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td><input class="form-control" v-model="nom_Scpi" type="text" placeholder="Default input"></td>
-        <td><input class="form-control" v-model="duree_Demembrement" type="text" placeholder="Default input"></td>
-        <td><input class="form-control" v-model="prix_Part" type="text" placeholder="Default input"></td>
-        <td>{{montant_Global_Investissement = prix_Part * nombre_Parts }}</td><!-- lui -->
-        <td>{{montant_Nue_Propriete = montant_Global_Investissement * cle_Repartition_Nue_Propriete / 100}}</td><!-- lui -->
-        <td><input class="form-control" v-model="cle_Repartition_Nue_Propriete" type="text" placeholder="Default input"></td>
-        <td><input class="form-control" v-model="cle_Repartition_usufruit" type="text" placeholder="Default input"></td>
-        <td>{{montant_Usufruit = cle_Repartition_usufruit * montant_Global_Investissement /100}}</td><!-- lui -->
-        <td><input class="form-control" v-model="nombre_Parts" type="text" placeholder="Default input"></td>
-        <td><input class="form-control" v-model="souscription_Divisible" type="text" placeholder="Default input"></td>
-    </tr>
-
-
-    <tbody>
-    <thead>
-    <tr>
-        <th scope="col">Année</th>
-        <th scope="col">TDVM Prévisionnel</th>
-        <th scope="col">Dividende Annuel</th>
-        <th scope="col">Soit un acompte trimestriel</th>
-        <th scope="col">Soit un dividende annuel par part de </th>
-        <th scope="col">Flux avant fiscalité</th>
-        <th scope="col">Amortissement usufruit</th>
-        <th scope="col">IS à payer</th>
-        <th scope="col">Flux après fiscalité</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    <tr>
-        <th scope="row">0</th> <!-- faire un ++ -->
-        <td>{{montant_Usufruit_negatif = - montant_Usufruit}}</td>
-        <td></td><!-- a revoir quand on commencer les autres tableau -->
-    </tr>
-    {{duree_Demembrement}}
-    <tr v-for="n in duree_Demembrement">
-        <th scope="row">{{n}}</th> <!-- faire un ++ -->
-        <td>{{tdvm_Previsionnel = hypothese_Medium | pourcentage}}</td>
-        <td>{{dividende_Annuel = (tdvm_Previsionnel * montant_Global_Investissement / 100)}}</td>
-        <td>{{acompte_Trimestriel = dividende_Annuel/4/nombre_Parts }}</td>
-        <td>{{dividende_Annuel_Part = acompte_Trimestriel * 4 }}</td>
-        <td>{{flux_Avant_Fiscalite = dividende_Annuel }}</td>
-        <td>{{amortissement_Usufruit = montant_Usufruit_negatif / duree_Demembrement }}</td>
-        <td>{{is_A_Payer =  - ((flux_Avant_Fiscalite + amortissement_Usufruit ) * dividende_Annuel)}}</td>
-        <td>{{flux_Apres_Fiscalite = is_A_Payer + flux_Avant_Fiscalite}}</td>
-    </tr>
-
-
-    <tbody>
-
-</table>
     <table class="table table-bordered">
         <thead>
         <tr>
+
             <th scope="col">Nom de la SCPI</th>
             <th scope="col">Durée du démembrement (nombre d'année)</th>
             <th scope="col">Prix par part (en pleine propriété)</th>
@@ -110,12 +44,15 @@
             <td><input class="form-control" v-model="duree_Demembrement" type="text" placeholder="Default input"></td>
             <td><input class="form-control" v-model="prix_Part" type="text" placeholder="Default input"></td>
             <td>{{montant_Global_Investissement = prix_Part * nombre_Parts }}</td><!-- lui -->
-            <td>{{montant_Nue_Propriete = montant_Global_Investissement * cle_Repartition_Nue_Propriete / 100}}</td><!-- lui -->
-            <td><input class="form-control" v-model="cle_Repartition_Nue_Propriete" type="text" placeholder="Default input"></td>
-            <td><input class="form-control" v-model="cle_Repartition_usufruit" type="text" placeholder="Default input"></td>
+            <td>{{montant_Nue_Propriete = montant_Global_Investissement * cle_Repartition_Nue_Propriete / 100}}</td>
+            <!-- lui -->
+            <td>{{cle_Repartition_Nue_Propriete = 100 - cle_Repartition_usufruit}}</td>
+            <td><input class="form-control" v-model="cle_Repartition_usufruit" type="text" placeholder="Default input">
+            </td>
             <td>{{montant_Usufruit = cle_Repartition_usufruit * montant_Global_Investissement /100}}</td><!-- lui -->
             <td><input class="form-control" v-model="nombre_Parts" type="text" placeholder="Default input"></td>
-            <td><input class="form-control" v-model="souscription_Divisible" type="text" placeholder="Default input"></td>
+            <td><input class="form-control" v-model="souscription_Divisible" type="text" placeholder="Default input">
+            </td>
         </tr>
 
 
@@ -126,7 +63,7 @@
             <th scope="col">TDVM Prévisionnel</th>
             <th scope="col">Dividende Annuel</th>
             <th scope="col">Soit un acompte trimestriel</th>
-            <th scope="col">Soit un dividende annuel par part de </th>
+            <th scope="col">Soit un dividende annuel par part de</th>
             <th scope="col">Flux avant fiscalité</th>
             <th scope="col">Amortissement usufruit</th>
             <th scope="col">IS à payer</th>
@@ -140,20 +77,83 @@
             <td>{{montant_Usufruit_negatif = - montant_Usufruit}}</td>
             <td></td><!-- a revoir quand on commencer les autres tableau -->
         </tr>
-        {{duree_Demembrement}}
         <tr v-for="n in duree_Demembrement">
+
             <th scope="row">{{n}}</th> <!-- faire un ++ -->
             <td>{{tdvm_Previsionnel = hypothese_Medium | pourcentage}}</td>
             <td>{{dividende_Annuel = (tdvm_Previsionnel * montant_Global_Investissement / 100)}}</td>
-            <td>{{acompte_Trimestriel = dividende_Annuel/4/nombre_Parts }}</td>
-            <td>{{dividende_Annuel_Part = acompte_Trimestriel * 4 }}</td>
+            <td>{{acompte_Trimestriel = dividende_Annuel/4/nombre_Parts | deux_chiffres_apres_virgules}}</td>
+            <td>{{dividende_Annuel_Part = acompte_Trimestriel * 4 | deux_chiffres_apres_virgules}}</td>
             <td>{{flux_Avant_Fiscalite = dividende_Annuel }}</td>
             <td>{{amortissement_Usufruit = montant_Usufruit_negatif / duree_Demembrement }}</td>
-            <td>{{is_A_Payer =  - ((flux_Avant_Fiscalite + amortissement_Usufruit ) * dividende_Annuel)}}</td>
-            <td>{{flux_Apres_Fiscalite = is_A_Payer + flux_Avant_Fiscalite}}</td>
+            <td>{{is_A_Payer = -(flux_Avant_Fiscalite + amortissement_Usufruit ) * 0.3333 | deux_chiffres_apres_virgules}}</td>
+            <td>{{flux_Apres_Fiscalite = flux_Avant_Fiscalite + is_A_Payer | deux_chiffres_apres_virgules}}</td>
         </tr>
 
 
+        <tbody>
+
+    </table>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">Hypothèse basse</th>
+            <th scope="col">Hypothèse medium</th>
+            <th scope="col">Hypothèse haute</th> <!-- lui -->
+        </tr>
+        </thead>
+        <tbody>
+
+
+        <tbody>
+
+
+        <tbody>
+
+        <tr>
+            <th scope="row">TDVM Prévisionnel sur la période</th> <!-- faire un ++ -->
+            <td>{{tdvm_Previsionnel = hypothese_Medium | pourcentage}}</td>
+            <td>{{tdvm_Previsionnel | pourcentage}}</td>
+            <td>{{acompte_Trimestriel = dividende_Annuel/4/nombre_Parts }}</td>
+
+        </tr>
+        <tr>
+            <th scope="row">Soit un acompte trimestriel par part de </th> <!-- faire un ++ -->
+            <td>{{tdvm_Previsionnel = hypothese_Medium | pourcentage}}</td>
+            <td>{{acompte_Trimestriel | deux_chiffres_apres_virgules}}</td>
+            <td>{{acompte_Trimestriel = dividende_Annuel/4/nombre_Parts }}</td>
+
+        </tr>
+        <tr>
+            <th scope="row">Soit un dividende annuel par part de </th> <!-- faire un ++ -->
+            <td>{{tdvm_Previsionnel = hypothese_Medium | pourcentage}}</td>
+            <td>{{dividende_Annuel_Part | deux_chiffres_apres_virgules}}</td>
+            <td>{{acompte_Trimestriel = dividende_Annuel/4/nombre_Parts }}</td>
+
+        </tr>
+
+        <tr>
+            <th scope="row">TRI avant Fiscalité </th> <!-- faire un ++ -->
+            <td>{{tdvm_Previsionnel = hypothese_Medium | pourcentage}}</td>
+            <td>{{ irr(montant_Usufruit_negatif,flux_Avant_Fiscalite,duree_Demembrement)}}</td>
+            <td>{{acompte_Trimestriel = dividende_Annuel/4/nombre_Parts }}</td>
+
+        </tr>
+        <tr>
+            <th scope="row">TRI après Fiscalité IS</th> <!-- faire un ++ -->
+            <td>{{tdvm_Previsionnel = hypothese_Medium | pourcentage}}</td>
+            <td>{{dividende_Annuel = (tdvm_Previsionnel * montant_Global_Investissement / 100)}}</td>
+            <td>{{acompte_Trimestriel = dividende_Annuel/4/nombre_Parts }}</td>
+
+        </tr>
+        <tr>
+            <th scope="row">Gain net (€)</th> <!-- faire un ++ -->
+            <td>{{tdvm_Previsionnel = hypothese_Medium | pourcentage}}</td>
+            <td>{{dividende_Annuel = (tdvm_Previsionnel * montant_Global_Investissement / 100)}}</td>
+            <td>{{acompte_Trimestriel = dividende_Annuel/4/nombre_Parts }}</td>
+
+        </tr>
         <tbody>
 
     </table>
@@ -172,34 +172,34 @@
 
       } */
 
-   /* let counter = {
+    /* let counter = {
 
-        data: function() {
-            return {
-                count: 0
-            }
-        },
+         data: function() {
+             return {
+                 count: 0
+             }
+         },
 
-        props:{
-            start: {type: Number, default: 0}
-        },
+         props:{
+             start: {type: Number, default: 0}
+         },
 
 
-        methods: {
-            increment: function () {
-                this.count ++
-            }
-        },
+         methods: {
+             increment: function () {
+                 this.count ++
+             }
+         },
 
-        mounted: function () {
-            this.count = this.start
-        },
+         mounted: function () {
+             this.count = this.start
+         },
 
-        template:
-        '<button @click="increment">{{count}}</button>' +
-        '</div>'
-    }
-*/
+         template:
+         '<button @click="increment">{{count}}</button>' +
+         '</div>'
+     }
+ */
 
     let vm = new Vue({
         el: '#app',
@@ -209,7 +209,7 @@
             prix_Part: 78,
             montant_Global_Investissement: 0,
             montant_Nue_Propriete: 0,
-            cle_Repartition_Nue_Propriete: 20,
+            cle_Repartition_Nue_Propriete: 88,
             cle_Repartition_usufruit: 12,
             montant_Usufruit: 0,
             montant_Usufruit_negatif: '',
@@ -219,14 +219,31 @@
             tdvm_Previsionnel: 0,
             dividende_Annuel: 0,
             acompte_Trimestriel: 0,
-            dividende_Annuel_Part: 0,
+            dividende_Annuel_Part: 0.33,
             flux_Avant_Fiscalite: 0,
             amortissement_Usufruit: 0,
-            is_A_Payer:0,
-            flux_Apres_Fiscalite:0,
-            hypothese_Medium:4.50,
+            is_A_Payer: 0,
+            flux_Apres_Fiscalite: 0,
+            hypothese_Medium: 4.50,
 
 
+        },
+
+        methods :{
+            irr : function (negatif,valeur,n) {
+                var finance = new Finance();
+                var contientvaleur = [];
+                for (var i = 0; i < n; i++) {
+                    contientvaleur.push(valeur)
+                }
+
+                console.log(contientvaleur);
+// To calculate Amortization
+              var irree =   finance.IRR(-1506.96, contientvaleur);
+
+                console.log(irree);
+                return irree;
+            }
         },
 
         filters: {
@@ -235,7 +252,14 @@
                     decimales = 2;
                 }
                 return Math.round(valeur * Math.pow(10, decimales)) / Math.pow(10, decimales) + ' %';
-            }
+            },
+
+            deux_chiffres_apres_virgules: function (valeur) {
+                return valeur.toFixed(2)
+            },
+
+
+
 
         }
 
@@ -244,8 +268,14 @@
 </script>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
 </html>
