@@ -27,31 +27,31 @@
         <tr>
 
             <th scope="col">Nom de la SCPI</th>
-            <th scope="col">Durée du démembrement (nombre d'année)</th>
-            <th scope="col">Prix par part (en pleine propriété)</th>
-            <th scope="col">Montant global d'investissement</th> <!-- lui -->
+            <th scope="col">Durée du démembrement (nombre d'année) (€)</th>
+            <th scope="col">Prix par part (en pleine propriété) (€)</th>
+            <th scope="col">Montant global d'investissement (€)</th> <!-- lui -->
             <th scope="col">Montant en nue-propriété (€)</th> <!-- lui -->
-            <th scope="col">Clé de répartition nue propriété</th>
-            <th scope="col">Clé de répartition usufruit</th><!-- lui -->
-            <th scope="col">Montant en Usufruit</th>
-            <th scope="col">Nombre de parts</th>
-            <th scope="col">Souscription divisible</th>
+            <th scope="col">Clé de répartition nue propriété (€)</th>
+            <th scope="col">Clé de répartition usufruit (€)</th><!-- lui -->
+            <th scope="col">Montant en Usufruit (€)</th>
+            <th scope="col">Nombre de parts (€)</th>
+            <th scope="col">Souscription divisible (€)</th>
         </tr>
         </thead>
         <tbody>
         <tr>
             <td><input class="form-control" v-model="nom_Scpi" type="text" placeholder="Default input"></td>
-            <td><input class="form-control" v-model="duree_Demembrement" type="text" placeholder="Default input"></td>
-            <td><input class="form-control" v-model="prix_Part" type="text" placeholder="Default input"></td>
+            <td><input class="form-control" v-model.lazy.number="duree_Demembrement" type="text" placeholder="Default input"></td>
+            <td><input class="form-control" v-model.number="prix_Part" type="text" placeholder="Default input"></td>
             <td>{{montant_Global_Investissement = prix_Part * nombre_Parts }}</td><!-- lui -->
             <td>{{montant_Nue_Propriete = montant_Global_Investissement * cle_Repartition_Nue_Propriete / 100}}</td>
             <!-- lui -->
-            <td>{{cle_Repartition_Nue_Propriete = 100 - cle_Repartition_usufruit}}</td>
-            <td><input class="form-control" v-model="cle_Repartition_usufruit" type="text" placeholder="Default input">
+            <td>{{cle_Repartition_Nue_Propriete = 100 - cle_Repartition_usufruit}} %</td>
+            <td><input class="form-control" v-model.number="cle_Repartition_usufruit " type="text" placeholder="Default input">
             </td>
             <td>{{montant_Usufruit = cle_Repartition_usufruit * montant_Global_Investissement /100}}</td><!-- lui -->
-            <td><input class="form-control" v-model="nombre_Parts" type="text" placeholder="Default input"></td>
-            <td><input class="form-control" v-model="souscription_Divisible" type="text" placeholder="Default input">
+            <td><input class="form-control" v-model.number="nombre_Parts" type="text" placeholder="Default input"></td>
+            <td><input class="form-control" v-model.number="souscription_Divisible" type="text" placeholder="Default input">
             </td>
         </tr>
 
@@ -136,21 +136,21 @@
         <tr>
             <th scope="row">TRI avant Fiscalité </th> <!-- faire un ++ -->
             <td>{{tdvm_Previsionnel = hypothese_Medium | pourcentage}}</td>
-            <td>{{ irr(montant_Usufruit_negatif,flux_Avant_Fiscalite,duree_Demembrement)}}</td>
+            <td>{{ irr(montant_Usufruit_negatif,flux_Avant_Fiscalite,duree_Demembrement)}} %</td>
             <td>{{acompte_Trimestriel = dividende_Annuel/4/nombre_Parts }}</td>
 
         </tr>
         <tr>
             <th scope="row">TRI après Fiscalité IS</th> <!-- faire un ++ -->
             <td>{{tdvm_Previsionnel = hypothese_Medium | pourcentage}}</td>
-            <td>{{dividende_Annuel = (tdvm_Previsionnel * montant_Global_Investissement / 100)}}</td>
+            <td>{{ irr(montant_Usufruit_negatif,flux_Apres_Fiscalite,duree_Demembrement)}} %</td>
             <td>{{acompte_Trimestriel = dividende_Annuel/4/nombre_Parts }}</td>
 
         </tr>
         <tr>
             <th scope="row">Gain net (€)</th> <!-- faire un ++ -->
             <td>{{tdvm_Previsionnel = hypothese_Medium | pourcentage}}</td>
-            <td>{{dividende_Annuel = (tdvm_Previsionnel * montant_Global_Investissement / 100)}}</td>
+            <td>{{montant_Usufruit_negatif + (flux_Apres_Fiscalite * duree_Demembrement) | deux_chiffres_apres_virgules}}</td>
             <td>{{acompte_Trimestriel = dividende_Annuel/4/nombre_Parts }}</td>
 
         </tr>
@@ -204,8 +204,8 @@
     let vm = new Vue({
         el: '#app',
         data: {
-            nom_Scpi: 'Wsh alors',
-            duree_Demembrement: 12,
+            nom_Scpi: 'scpi',
+            duree_Demembrement: 8,
             prix_Part: 78,
             montant_Global_Investissement: 0,
             montant_Nue_Propriete: 0,
@@ -214,7 +214,7 @@
             montant_Usufruit: 0,
             montant_Usufruit_negatif: '',
             nombre_Parts: 161,
-            souscription_Divisible: 0,
+            souscription_Divisible: 'non',
             annee: 0,
             tdvm_Previsionnel: 0,
             dividende_Annuel: 0,
@@ -232,15 +232,16 @@
         methods :{
             irr : function (negatif,valeur,n) {
                 var finance = new Finance();
-                var contientvaleur = [];
+                var contientvaleur = [negatif];
                 for (var i = 0; i < n; i++) {
                     contientvaleur.push(valeur)
                 }
 
                 console.log(contientvaleur);
 // To calculate Amortization
-              var irree =   finance.IRR(-34874,contientvaleur);
-
+                // app[func].apply( this, args );
+              //var irree =   finance.IRR(-34874,contientvaleur);
+                var irree = finance.IRR.apply(this,contientvaleur);
                 console.log(irree);
                 return irree;
             }
