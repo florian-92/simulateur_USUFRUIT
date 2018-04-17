@@ -4,6 +4,17 @@
     <list default="true" id="94a9dc62-3412-456a-8aac-2416a326e3fe" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/V1_usufruit.html" beforeDir="false" afterPath="$PROJECT_DIR$/V1_usufruit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/essamjoubori-finance.js-10df6b8/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/essamjoubori-finance.js-10df6b8/.travis.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/essamjoubori-finance.js-10df6b8/LICENSE-MIT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/essamjoubori-finance.js-10df6b8/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/essamjoubori-finance.js-10df6b8/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/essamjoubori-finance.js-10df6b8/finance.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/essamjoubori-finance.js-10df6b8/finance.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/essamjoubori-finance.js-10df6b8/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/essamjoubori-finance.js-10df6b8/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/essamjoubori-finance.js-10df6b8/test/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/essamjoubori-finance.js-v4.0.1-1-g10df6b8.zip" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,8 +28,13 @@
       <file leaf-file-name="V1_usufruit.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/V1_usufruit.html">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="483">
               <caret line="226" column="34" selection-start-line="226" selection-start-column="32" selection-end-line="226" selection-end-column="34" />
+=======
+            <state relative-caret-position="286">
+              <caret line="50" column="90" selection-start-line="50" selection-start-column="90" selection-end-line="50" selection-end-column="90" />
+>>>>>>> 1479cde5d7f998ed8d3e5214f445bb6194a11fb3
             </state>
           </provider>
         </entry>
@@ -42,6 +58,14 @@
       <find>duree_Demembrement</find>
       <find>irr</find>
       <find>cle</find>
+      <find>hypothese_Medium</find>
+      <find>tdvm_Previsionnel</find>
+      <find>divi</find>
+      <find>montant</find>
+      <find>flux_Avant_Fiscalite</find>
+      <find>flux_Apres_Fiscalite</find>
+      <find>montant_Usufruit_negatif</find>
+      <find>montant_Usufruit</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -66,7 +90,11 @@
   <component name="ProjectFrameBounds" fullScreen="true">
     <option name="y" value="23" />
     <option name="width" value="1280" />
+<<<<<<< HEAD
     <option name="height" value="722" />
+=======
+    <option name="height" value="709" />
+>>>>>>> 1479cde5d7f998ed8d3e5214f445bb6194a11fb3
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -74,18 +102,23 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
+<<<<<<< HEAD
               <item name="Simulateur_USUFRUIT" type="b2602c69:ProjectViewProjectNode" />
               <item name="Simulateur_USUFRUIT" type="2a2b976b:PhpTreeStructureProvider$1" />
+=======
+              <item name="simulateur_USUFRUIT" type="b2602c69:ProjectViewProjectNode" />
+              <item name="simulateur_USUFRUIT" type="2a2b976b:PhpTreeStructureProvider$1" />
+>>>>>>> 1479cde5d7f998ed8d3e5214f445bb6194a11fb3
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -94,6 +127,14 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -118,12 +159,21 @@
       <option name="presentableId" value="Default" />
       <updated>1523608029723</updated>
       <workItem from="1523608030982" duration="12148000" />
+<<<<<<< HEAD
       <workItem from="1523864736940" duration="11882000" />
+=======
+      <workItem from="1523864736940" duration="9456000" />
+      <workItem from="1523889755724" duration="4682000" />
+>>>>>>> 1479cde5d7f998ed8d3e5214f445bb6194a11fb3
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="24030000" />
+=======
+    <option name="totallyTimeSpent" value="26286000" />
+>>>>>>> 1479cde5d7f998ed8d3e5214f445bb6194a11fb3
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -132,16 +182,23 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32965517" />
       <window_info anchor="right" id="Remote Host" order="3" />
       <window_info content_ui="combo" id="Project" order="0" weight="0.2536349" />
+=======
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32965517" />
+      <window_info anchor="right" id="Remote Host" order="3" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25767368" />
+>>>>>>> 1479cde5d7f998ed8d3e5214f445bb6194a11fb3
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Inspection Results" weight="0.32965517" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -160,38 +217,34 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/V1_usufruit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1710">
-          <caret line="114" column="70" selection-start-line="114" selection-start-column="16" selection-end-line="114" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../V2_simulateur/Simulateur-v2/simulateur.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4170">
-          <caret line="278" column="32" lean-forward="true" selection-start-line="278" selection-start-column="32" selection-end-line="278" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../V2_simulateur/Simulateur-v2/simulateur.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4170">
-          <caret line="278" column="32" selection-start-line="278" selection-start-column="32" selection-end-line="278" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/financejs/finance.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-131">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state relative-caret-position="3915">
+          <caret line="261" lean-forward="true" selection-start-line="261" selection-end-line="261" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/V1_usufruit.html">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1710">
+          <caret line="114" column="70" selection-start-line="114" selection-start-column="16" selection-end-line="114" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../V2_simulateur/Simulateur-v2/simulateur.html" />
+    <entry file="file://$PROJECT_DIR$/../V2_simulateur/Simulateur-v2/simulateur.html" />
+    <entry file="file://$PROJECT_DIR$/node_modules/financejs/finance.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-131" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/V1_usufruit.html">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="483">
           <caret line="226" column="34" selection-start-line="226" selection-start-column="32" selection-end-line="226" selection-end-column="34" />
+=======
+        <state relative-caret-position="286">
+          <caret line="50" column="90" selection-start-line="50" selection-start-column="90" selection-end-line="50" selection-end-column="90" />
+>>>>>>> 1479cde5d7f998ed8d3e5214f445bb6194a11fb3
         </state>
       </provider>
     </entry>
