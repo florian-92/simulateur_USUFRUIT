@@ -17,8 +17,8 @@
       <file leaf-file-name="V1_usufruit.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/V1_usufruit.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="261" column="12" selection-start-line="261" selection-start-column="12" selection-end-line="261" selection-end-column="12" />
+            <state relative-caret-position="483">
+              <caret line="226" column="34" selection-start-line="226" selection-start-column="32" selection-end-line="226" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -64,8 +64,9 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="y" value="23" />
     <option name="width" value="1280" />
-    <option name="height" value="800" />
+    <option name="height" value="722" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -80,17 +81,6 @@
             <path>
               <item name="Simulateur_USUFRUIT" type="b2602c69:ProjectViewProjectNode" />
               <item name="Simulateur_USUFRUIT" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Simulateur_USUFRUIT" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Simulateur_USUFRUIT" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="node_modules" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="Simulateur_USUFRUIT" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Simulateur_USUFRUIT" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="node_modules" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="financejs" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -128,12 +118,12 @@
       <option name="presentableId" value="Default" />
       <updated>1523608029723</updated>
       <workItem from="1523608030982" duration="12148000" />
-      <workItem from="1523864736940" duration="9456000" />
+      <workItem from="1523864736940" duration="11882000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21604000" />
+    <option name="totallyTimeSpent" value="24030000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -144,9 +134,9 @@
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32965517" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32965517" />
       <window_info anchor="right" id="Remote Host" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2536349" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.2536349" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -200,8 +190,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/V1_usufruit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="314">
-          <caret line="261" column="12" selection-start-line="261" selection-start-column="12" selection-end-line="261" selection-end-column="12" />
+        <state relative-caret-position="483">
+          <caret line="226" column="34" selection-start-line="226" selection-start-column="32" selection-end-line="226" selection-end-column="34" />
         </state>
       </provider>
     </entry>

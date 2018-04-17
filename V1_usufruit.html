@@ -224,7 +224,8 @@
             amortissement_Usufruit: 0,
             is_A_Payer: 0,
             flux_Apres_Fiscalite: 0,
-            hypothese_Medium: 4.50,
+            hypothese_Medium: 4.50
+            ,
 
 
         },
@@ -244,7 +245,9 @@
                 var irree = finance.IRR.apply(this,contientvaleur);
                 console.log(irree);
                 return irree;
-            }
+            },
+
+
         },
 
         filters: {
@@ -258,8 +261,6 @@
             deux_chiffres_apres_virgules: function (valeur) {
                 return valeur.toFixed(2)
             },
-
-
 
 
 
