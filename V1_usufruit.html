@@ -11,6 +11,7 @@
 
     <title>Hello, world!</title>
     <script src="node_modules/financejs/finance.js"></script>
+    <link href="simulateur.css" rel="stylesheet">
 </head>
 <style>
     th {
@@ -18,199 +19,169 @@
     }
 </style>
 <body>
+<div id="wrapper">
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; background-color: #01528a">
+        <div class="navbar-header"><img src="logo.png">
+            <a class="navbar-brand" href="index.html"></a>
+        </div>
+    </nav>
+    <div id="page-wrapper" class="arial">
+    <div id="app" class="row">
+        <!-- comment pour les messages de succes sauf que la on en a beaucoup donc on crée un composant-->
 
-<div id="app" class="row">
-    <!-- comment pour les messages de succes sauf que la on en a beaucoup donc on crée un composant-->
+        <table class="table table-bordered">
+            <thead>
+            <tr>
 
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-
-            <th scope="col">Nom de la SCPI</th>
-            <th scope="col">Durée du démembrement (nombre d'année) (€)</th>
-            <th scope="col">Prix par part (en pleine propriété) (€)</th>
-            <th scope="col">Montant global d'investissement (€)</th> <!-- lui -->
-            <th scope="col">Montant en nue-propriété (€)</th> <!-- lui -->
-            <th scope="col">Clé de répartition nue propriété (%)</th>
-            <th scope="col">Clé de répartition usufruit (%)</th><!-- lui -->
-            <th scope="col">Montant en Usufruit (€)</th>
-            <th scope="col">Nombre de parts (€)</th>
-            <th scope="col">Souscription divisible (€)</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td><input class="form-control" v-model="nom_Scpi" type="text" placeholder="Default input"></td>
-            <td><input class="form-control" v-model.lazy.number="duree_Demembrement" type="text" placeholder="Default input"></td>
-            <td><input class="form-control" v-model.number="prix_Part" type="text" placeholder="Default input"></td>
-            <td>{{montant_Global_Investissement = prix_Part * nombre_Parts | deux_chiffres_apres_virgules}}</td><!-- lui -->
-            <td>{{montant_Nue_Propriete = montant_Global_Investissement * cle_Repartition_Nue_Propriete / 100 | deux_chiffres_apres_virgules}}</td>
-            <!-- lui -->
-            <td>{{cle_Repartition_Nue_Propriete = 100 - cle_Repartition_usufruit}} %</td>
-            <td><input class="form-control" v-model.number="cle_Repartition_usufruit " type="text" placeholder="Default input">
-            </td>
-            <td>{{montant_Usufruit = cle_Repartition_usufruit * montant_Global_Investissement /100 | deux_chiffres_apres_virgules}}</td><!-- lui -->
-            <td><input class="form-control" v-model.number="nombre_Parts" type="text" placeholder="Default input"></td>
-            <td><input class="form-control" v-model.number="souscription_Divisible" type="text" placeholder="Default input">
-            </td>
-        </tr>
-
-
-        <tbody>
-        <thead>
-        <tr>
-            <th scope="col">Année</th>
-            <th scope="col">TDVM Prévisionnel</th>
-            <th scope="col">Dividende Annuel</th>
-            <th scope="col">Soit un acompte trimestriel</th>
-            <th scope="col">Soit un dividende annuel par part de</th>
-            <th scope="col">Flux avant fiscalité</th>
-            <th scope="col">Amortissement usufruit</th>
-            <th scope="col">IS à payer</th>
-            <th scope="col">Flux après fiscalité</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        <tr>
-            <th scope="row">0</th> <!-- faire un ++ -->
-            <td>{{montant_Usufruit_negatif = - montant_Usufruit | deux_chiffres_apres_virgules}}</td>
-            <td></td><!-- a revoir quand on commencer les autres tableau -->
-        </tr>
-        <tr v-for="n in duree_Demembrement">
-
-            <th scope="row">{{n}}</th> <!-- faire un ++ -->
-            <td>{{tdvm_Previsionnel = hypothese_Medium | pourcentage}}</td>
-            <td>{{dividende_Annuel = (tdvm_Previsionnel * montant_Global_Investissement / 100)}}</td>
-            <td>{{acompte_Trimestriel = dividende_Annuel/4/nombre_Parts | deux_chiffres_apres_virgules}}</td>
-            <td>{{dividende_Annuel_Part = acompte_Trimestriel * 4 | deux_chiffres_apres_virgules}}</td>
-            <td>{{flux_Avant_Fiscalite = dividende_Annuel | deux_chiffres_apres_virgules}}</td>
-            <td>{{amortissement_Usufruit = montant_Usufruit_negatif / duree_Demembrement | deux_chiffres_apres_virgules}}</td>
-            <td>{{is_A_Payer = -(flux_Avant_Fiscalite + amortissement_Usufruit ) * 0.3333 | deux_chiffres_apres_virgules}}</td>
-            <td>{{flux_Apres_Fiscalite = flux_Avant_Fiscalite + is_A_Payer | deux_chiffres_apres_virgules}}</td>
-        </tr>
+                <th scope="col">Nom de la SCPI</th>
+                <th scope="col">Durée du démembrement (nombre d'année) (€)</th>
+                <th scope="col">Prix par part (en pleine propriété) (€)</th>
+                <th scope="col">Montant global d'investissement (€)</th> <!-- lui -->
+                <th scope="col">Montant en nue-propriété (€)</th> <!-- lui -->
+                <th scope="col">Clé de répartition nue propriété (%)</th>
+                <th scope="col">Clé de répartition usufruit (%)</th><!-- lui -->
+                <th scope="col">Montant en Usufruit (€)</th>
+                <th scope="col">Nombre de parts (€)</th>
+                <th scope="col">Souscription divisible (€)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><input class="form-control" v-model="nom_Scpi" type="text" placeholder="Default input"></td>
+                <td><input class="form-control" v-model.lazy.number="duree_Demembrement >3" type="text" placeholder="Default input"></td>
+                <td><input class="form-control" v-model.number="prix_Part" type="text" placeholder="Default input"></td>
+                <td>{{montant_Global_Investissement = prix_Part * nombre_Parts | deux_chiffres_apres_virgules}}</td><!-- lui -->
+                <td>{{montant_Nue_Propriete = montant_Global_Investissement * cle_Repartition_Nue_Propriete / 100 | deux_chiffres_apres_virgules}}</td>
+                <!-- lui -->
+                <td>{{cle_Repartition_Nue_Propriete = 100 - cle_Repartition_usufruit}} %</td>
+                <td><input class="form-control" v-model.number="cle_Repartition_usufruit " type="text" placeholder="Default input">
+                </td>
+                <td>{{montant_Usufruit = cle_Repartition_usufruit * montant_Global_Investissement /100 | deux_chiffres_apres_virgules}}</td><!-- lui -->
+                <td><input class="form-control" v-model.number="nombre_Parts" type="text" placeholder="Default input"></td>
+                <td><input class="form-control" v-model.number="souscription_Divisible" type="text" placeholder="Default input">
+                </td>
+            </tr>
 
 
-        <tbody>
+            <tbody>
+            <thead>
+            <tr>
+                <th scope="col">Année</th>
+                <th scope="col">TDVM Prévisionnel</th>
+                <th scope="col">Dividende Annuel</th>
+                <th scope="col">Soit un acompte trimestriel</th>
+                <th scope="col">Soit un dividende annuel par part de</th>
+                <th scope="col">Flux avant fiscalité</th>
+                <th scope="col">Amortissement usufruit</th>
+                <th scope="col">IS à payer</th>
+                <th scope="col">Flux après fiscalité</th>
+            </tr>
+            </thead>
 
-    </table>
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th scope="col"></th>
-            <th scope="col">Hypothèse basse</th>
-            <th scope="col">Hypothèse medium</th>
-            <th scope="col">Hypothèse haute</th> <!-- lui -->
-        </tr>
-        </thead>
-        <tbody>
+            <tbody>
+            <tr>
+                <th scope="row">0</th> <!-- faire un ++ -->
+                <td>{{montant_Usufruit_negatif = - montant_Usufruit | deux_chiffres_apres_virgules}}</td>
+                <td></td><!-- a revoir quand on commencer les autres tableau -->
+            </tr>
+            <tr v-for="n in duree_Demembrement">
+
+                <th scope="row">{{n}}</th> <!-- faire un ++ -->
+                <td>{{tdvm_Previsionnel = hypothese_Medium | pourcentage}}</td>
+                <td>{{dividende_Annuel = (tdvm_Previsionnel * montant_Global_Investissement / 100)}}</td>
+                <td>{{acompte_Trimestriel = dividende_Annuel/4/nombre_Parts | deux_chiffres_apres_virgules}}</td>
+                <td>{{dividende_Annuel_Part = acompte_Trimestriel * 4 | deux_chiffres_apres_virgules}}</td>
+                <td>{{flux_Avant_Fiscalite = dividende_Annuel | deux_chiffres_apres_virgules}}</td>
+                <td>{{amortissement_Usufruit = montant_Usufruit_negatif / duree_Demembrement | deux_chiffres_apres_virgules}}</td>
+                <td>{{is_A_Payer = -(flux_Avant_Fiscalite + amortissement_Usufruit ) * 0.3333 | deux_chiffres_apres_virgules}}</td>
+                <td>{{flux_Apres_Fiscalite = flux_Avant_Fiscalite + is_A_Payer | deux_chiffres_apres_virgules}}</td>
+            </tr>
 
 
-        <tbody>
+            <tbody>
+
+        </table>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Hypothèse basse</th>
+                <th scope="col">Hypothèse medium</th>
+                <th scope="col">Hypothèse haute</th> <!-- lui -->
+            </tr>
+            </thead>
+            <tbody>
 
 
-        <tbody>
+            <tbody>
 
-        <tr>
-            <th scope="row">TDVM Prévisionnel sur la période</th> <!-- faire un ++ -->
-            <td>{{tdvm_Previsionnel = hypothese_Medium | pourcentage}}</td>
-            <td>{{tdvm_Previsionnel | pourcentage}}</td>
-            <td>{{acompte_Trimestriel = dividende_Annuel/4/nombre_Parts }}</td>
 
-        </tr>
-        <tr>
-            <th scope="row">Soit un acompte trimestriel par part de </th> <!-- faire un ++ -->
-            <td>{{tdvm_Previsionnel = hypothese_Medium | pourcentage}}</td>
-            <td>{{acompte_Trimestriel | deux_chiffres_apres_virgules}}</td>
-            <td>{{acompte_Trimestriel = dividende_Annuel/4/nombre_Parts }}</td>
+            <tbody>
 
-        </tr>
-        <tr>
-            <th scope="row">Soit un dividende annuel par part de </th> <!-- faire un ++ -->
-            <td>{{tdvm_Previsionnel = hypothese_Medium | pourcentage}}</td>
-            <td>{{dividende_Annuel_Part | deux_chiffres_apres_virgules}}</td>
-            <td>{{acompte_Trimestriel = dividende_Annuel/4/nombre_Parts }}</td>
+            <tr>
+                <th scope="row">TDVM Prévisionnel sur la période</th> <!-- faire un ++ -->
+                <td>{{hypothese_Basse| pourcentage}}</td>
+                <td>{{hypothese_Medium | pourcentage}}</td>
+                <td>{{hypothese_Haute | pourcentage }}</td>
 
-        </tr>
+            </tr>
+            <tr>
+                <th scope="row">Soit un acompte trimestriel par part de </th> <!-- faire un ++ -->
+                <td>{{(acompte_Trimestriel/hypothese_Medium)*hypothese_Basse | deux_chiffres_apres_virgules}}</td>
+                <td>{{acompte_Trimestriel | deux_chiffres_apres_virgules}}</td>
+                <td>{{(acompte_Trimestriel/hypothese_Medium)*hypothese_Haute | deux_chiffres_apres_virgules }}</td>
 
-        <tr>
-            <th scope="row">TRI avant Fiscalité </th> <!-- faire un ++ -->
-            <td>{{tdvm_Previsionnel = hypothese_Medium | pourcentage}}</td>
-            <td>{{ irr(montant_Usufruit_negatif,flux_Avant_Fiscalite,duree_Demembrement)}} %</td>
-            <td>{{acompte_Trimestriel = dividende_Annuel/4/nombre_Parts }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Soit un dividende annuel par part de </th> <!-- faire un ++ -->
+                <td>{{(dividende_Annuel_Part/hypothese_Medium)*hypothese_Basse | deux_chiffres_apres_virgules}}</td>
+                <td>{{dividende_Annuel_Part | deux_chiffres_apres_virgules}}</td>
+                <td>{{(dividende_Annuel_Part/hypothese_Medium)*hypothese_Haute | deux_chiffres_apres_virgules }}</td>
 
-        </tr>
-        <tr>
-            <th scope="row">TRI après Fiscalité IS</th> <!-- faire un ++ -->
-            <td>{{tdvm_Previsionnel = hypothese_Medium | pourcentage}}</td>
-            <td>{{ irr(montant_Usufruit_negatif,flux_Apres_Fiscalite,duree_Demembrement)}} %</td>
-            <td>{{acompte_Trimestriel = dividende_Annuel/4/nombre_Parts }}</td>
+            </tr>
 
-        </tr>
-        <tr>
-            <th scope="row">Gain net (€)</th> <!-- faire un ++ -->
-            <td>{{tdvm_Previsionnel = hypothese_Medium | pourcentage}}</td>
-            <td>{{montant_Usufruit_negatif + (flux_Apres_Fiscalite * duree_Demembrement) | deux_chiffres_apres_virgules}}</td>
-            <td>{{acompte_Trimestriel = dividende_Annuel/4/nombre_Parts }}</td>
+            <tr>
+                <th scope="row">TRI avant Fiscalité </th> <!-- faire un ++ -->
+                <td>{{irr(montant_Usufruit_negatif,(flux_Avant_Fiscalite/hypothese_Medium)*hypothese_Basse,duree_Demembrement)}}</td>
+                <td>{{ irr(montant_Usufruit_negatif,flux_Avant_Fiscalite,duree_Demembrement)}} %</td>
+                <td>{{irr(montant_Usufruit_negatif,(flux_Avant_Fiscalite/hypothese_Medium)*hypothese_Haute,duree_Demembrement) }}</td>
 
-        </tr>
-        <tbody>
+            </tr>
+            <tr>
+                <th scope="row">TRI après Fiscalité IS</th> <!-- faire un ++ -->
+                <td>{{ irr(montant_Usufruit_negatif,(flux_Apres_Fiscalite/hypothese_Medium)*hypothese_Basse,duree_Demembrement)}} %</td>
+                <td>{{ irr(montant_Usufruit_negatif,flux_Apres_Fiscalite,duree_Demembrement)}} %</td>
+                <td>{{ irr(montant_Usufruit_negatif,(flux_Apres_Fiscalite/hypothese_Medium)*hypothese_Haute,duree_Demembrement) }} %</td>
 
-    </table>
+            </tr>
+            <tr>
+                <th scope="row">Gain net (€)</th> <!-- faire un ++ -->
+                <td>{{montant_Usufruit_negatif + ((flux_Apres_Fiscalite/hypothese_Medium)*hypothese_Basse * duree_Demembrement) | deux_chiffres_apres_virgules}}</td>
+                <td>{{montant_Usufruit_negatif + (flux_Apres_Fiscalite * duree_Demembrement) | deux_chiffres_apres_virgules}}</td>
+                <td>{{montant_Usufruit_negatif + ((flux_Apres_Fiscalite/hypothese_Medium)*hypothese_Haute * duree_Demembrement) | deux_chiffres_apres_virgules }}</td>
 
+            </tr>
+            <tbody>
+
+        </table>
+
+    </div>
+    </div>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
 <script>
-
-    /*  let message = {
-          props: {
-              type:{type: String, default:'succes'},
-              message: String
-          },
-          template: '<div class="message" :class="type">{{message}}</div>'
-
-
-      } */
-
-    /* let counter = {
-
-         data: function() {
-             return {
-                 count: 0
-             }
-         },
-
-         props:{
-             start: {type: Number, default: 0}
-         },
-
-
-         methods: {
-             increment: function () {
-                 this.count ++
-             }
-         },
-
-         mounted: function () {
-             this.count = this.start
-         },
-
-         template:
-         '<button @click="increment">{{count}}</button>' +
-         '</div>'
-     }
- */
 
     let vm = new Vue({
         el: '#app',
         data: {
             nom_Scpi: 'scpi',
-            duree_Demembrement: 8,
-            prix_Part: 78,
+            duree_Demembrement: 7,
+            prix_Part: 800,
             montant_Global_Investissement: 0,
             montant_Nue_Propriete: 0,
             cle_Repartition_Nue_Propriete: 88,
-            cle_Repartition_usufruit: 12,
+            cle_Repartition_usufruit: 24,
             montant_Usufruit: 0,
             montant_Usufruit_negatif: '',
             nombre_Parts: 161,
@@ -225,6 +196,8 @@
             is_A_Payer: 0,
             flux_Apres_Fiscalite: 0,
             hypothese_Medium: 4.50,
+            hypothese_Basse: 4.00,
+            hypothese_Haute: 4.75
 
 
         },
