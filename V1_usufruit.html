@@ -34,7 +34,7 @@
             <tr>
 
                 <th scope="col">Nom de la SCPI</th>
-                <th scope="col">Durée du démembrement (nombre d'année) (€)</th>
+                <th scope="col">Durée du démembrement (nombre d'année entre 3 et 20 ans) (€)(</th>
                 <th scope="col">Prix par part (en pleine propriété) (€)</th>
                 <th scope="col">Montant global d'investissement (€)</th> <!-- lui -->
                 <th scope="col">Montant en nue-propriété (€)</th> <!-- lui -->
@@ -42,24 +42,21 @@
                 <th scope="col">Clé de répartition usufruit (%)</th><!-- lui -->
                 <th scope="col">Montant en Usufruit (€)</th>
                 <th scope="col">Nombre de parts (€)</th>
-                <th scope="col">Souscription divisible (€)</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td><input class="form-control" v-model="nom_Scpi" type="text" placeholder="Default input"></td>
-                <td><input class="form-control" v-model.lazy.number="duree_Demembrement >3" type="text" placeholder="Default input"></td>
+                <td><input class="form-control" v-model.number="duree_Demembrement" type="text" placeholder="Default input" ></td>
                 <td><input class="form-control" v-model.number="prix_Part" type="text" placeholder="Default input"></td>
-                <td>{{montant_Global_Investissement = prix_Part * nombre_Parts | deux_chiffres_apres_virgules}}</td><!-- lui -->
-                <td>{{montant_Nue_Propriete = montant_Global_Investissement * cle_Repartition_Nue_Propriete / 100 | deux_chiffres_apres_virgules}}</td>
+                <td>{{montant_Global_Investissement = prix_Part * nombre_Parts | deux_chiffres_apres_virgules | remplacement}}</td><!-- lui -->
+                <td>{{montant_Nue_Propriete = montant_Global_Investissement * cle_Repartition_Nue_Propriete / 100 | deux_chiffres_apres_virgules| remplacement}}</td>
                 <!-- lui -->
-                <td>{{cle_Repartition_Nue_Propriete = 100 - cle_Repartition_usufruit}} %</td>
-                <td><input class="form-control" v-model.number="cle_Repartition_usufruit " type="text" placeholder="Default input">
+                <td>{{cle_Repartition_Nue_Propriete =100 - cle_Repartition_usufruit | remplacement}} %</td>
+                <td><input class="form-control" v-model.number="cle_Repartition_usufruit " type="number" step="0.05 placeholder="Default input">
                 </td>
-                <td>{{montant_Usufruit = cle_Repartition_usufruit * montant_Global_Investissement /100 | deux_chiffres_apres_virgules}}</td><!-- lui -->
-                <td><input class="form-control" v-model.number="nombre_Parts" type="text" placeholder="Default input"></td>
-                <td><input class="form-control" v-model.number="souscription_Divisible" type="text" placeholder="Default input">
-                </td>
+                <td>{{montant_Usufruit = cle_Repartition_usufruit * montant_Global_Investissement /100 | deux_chiffres_apres_virgules | remplacement}}</td><!-- lui -->
+                <td><input class="form-control" v-model.number="nombre_Parts" step="0.05" type="text" placeholder="Default input"></td>
             </tr>
 
 
@@ -77,28 +74,39 @@
                 <th scope="col">Flux après fiscalité</th>
             </tr>
             </thead>
+            <div v-if="duree_Demembrement < 20">
+                <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td> <!-- faire un ++ -->
+                    <td>{{montant_Usufruit_negatif = - montant_Usufruit | deux_chiffres_apres_virgules | remplacement}}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr v-for="n in duree_Demembrement">
 
-            <tbody>
-            <tr>
-                <th scope="row">0</th> <!-- faire un ++ -->
-                <td>{{montant_Usufruit_negatif = - montant_Usufruit | deux_chiffres_apres_virgules}}</td>
-                <td></td><!-- a revoir quand on commencer les autres tableau -->
-            </tr>
-            <tr v-for="n in duree_Demembrement">
-
-                <th scope="row">{{n}}</th> <!-- faire un ++ -->
-                <td>{{tdvm_Previsionnel = hypothese_Medium | pourcentage}}</td>
-                <td>{{dividende_Annuel = (tdvm_Previsionnel * montant_Global_Investissement / 100)}}</td>
-                <td>{{acompte_Trimestriel = dividende_Annuel/4/nombre_Parts | deux_chiffres_apres_virgules}}</td>
-                <td>{{dividende_Annuel_Part = acompte_Trimestriel * 4 | deux_chiffres_apres_virgules}}</td>
-                <td>{{flux_Avant_Fiscalite = dividende_Annuel | deux_chiffres_apres_virgules}}</td>
-                <td>{{amortissement_Usufruit = montant_Usufruit_negatif / duree_Demembrement | deux_chiffres_apres_virgules}}</td>
-                <td>{{is_A_Payer = -(flux_Avant_Fiscalite + amortissement_Usufruit ) * 0.3333 | deux_chiffres_apres_virgules}}</td>
-                <td>{{flux_Apres_Fiscalite = flux_Avant_Fiscalite + is_A_Payer | deux_chiffres_apres_virgules}}</td>
-            </tr>
+                    <th scope="row">{{n}}</th> <!-- faire un ++ -->
+                    <td>{{tdvm_Previsionnel = hypothese_Medium | pourcentage | remplacement}}</td>
+                    <td>{{dividende_Annuel = (tdvm_Previsionnel * montant_Global_Investissement / 100) | remplacement | remplacement}}</td>
+                    <td>{{acompte_Trimestriel = dividende_Annuel/4/nombre_Parts | deux_chiffres_apres_virgules | remplacement}}</td>
+                    <td>{{dividende_Annuel_Part = acompte_Trimestriel * 4 | deux_chiffres_apres_virgules | remplacement}}</td>
+                    <td>{{flux_Avant_Fiscalite = dividende_Annuel | deux_chiffres_apres_virgules | remplacement}}</td>
+                    <td>{{amortissement_Usufruit = montant_Usufruit_negatif / duree_Demembrement | deux_chiffres_apres_virgules | remplacement}}</td>
+                    <td>{{is_A_Payer = -(flux_Avant_Fiscalite + amortissement_Usufruit ) * 0.3333 | deux_chiffres_apres_virgules | remplacement}}</td>
+                    <td>{{flux_Apres_Fiscalite = flux_Avant_Fiscalite + is_A_Payer | deux_chiffres_apres_virgules | remplacement}}</td>
+                </tr>
 
 
-            <tbody>
+
+
+                <tbody>
+            </div>
+
+
 
         </table>
         <table class="table table-bordered">
@@ -112,17 +120,11 @@
             </thead>
             <tbody>
 
-
-            <tbody>
-
-
-            <tbody>
-
             <tr>
-                <th scope="row">TDVM Prévisionnel sur la période</th> <!-- faire un ++ -->
-                <td>{{hypothese_Basse| pourcentage}}</td>
-                <td>{{hypothese_Medium | pourcentage}}</td>
-                <td>{{hypothese_Haute | pourcentage }}</td>
+                <th scope="row">TDVM Prévisionnel sur la période (en %)</th> <!-- faire un ++ -->
+                <td><input class="form-control" v-model="hypothese_Basse" type="number" step="0.05" placeholder="Default input"></td>
+                <td><input class="form-control" v-model="hypothese_Medium" type="number" step="0.05" placeholder="Default input"></td>
+                <td><input class="form-control" v-model="hypothese_Haute" type="number" step="0.05" placeholder="Default input"></td>
 
             </tr>
             <tr>
@@ -149,19 +151,19 @@
             </tr>
             <tr>
                 <th scope="row">TRI après Fiscalité IS</th> <!-- faire un ++ -->
-                <td>{{ irr(montant_Usufruit_negatif,(flux_Apres_Fiscalite/hypothese_Medium)*hypothese_Basse,duree_Demembrement)}} %</td>
+                <td>{{ irr(montant_Usufruit_negatif,flux_Apres_Fiscalite_Bas(),duree_Demembrement)}} %</td>
                 <td>{{ irr(montant_Usufruit_negatif,flux_Apres_Fiscalite,duree_Demembrement)}} %</td>
-                <td>{{ irr(montant_Usufruit_negatif,(flux_Apres_Fiscalite/hypothese_Medium)*hypothese_Haute,duree_Demembrement) }} %</td>
+                <td>{{ irr(montant_Usufruit_negatif,flux_Apres_Fiscalite_Haut(),duree_Demembrement) }} %</td>
 
             </tr>
             <tr>
                 <th scope="row">Gain net (€)</th> <!-- faire un ++ -->
-                <td>{{montant_Usufruit_negatif + ((flux_Apres_Fiscalite/hypothese_Medium)*hypothese_Basse * duree_Demembrement) | deux_chiffres_apres_virgules}}</td>
+                <td>{{montant_Usufruit_negatif + (flux_Apres_Fiscalite_Bas() * duree_Demembrement) | deux_chiffres_apres_virgules}}</td>
                 <td>{{montant_Usufruit_negatif + (flux_Apres_Fiscalite * duree_Demembrement) | deux_chiffres_apres_virgules}}</td>
-                <td>{{montant_Usufruit_negatif + ((flux_Apres_Fiscalite/hypothese_Medium)*hypothese_Haute * duree_Demembrement) | deux_chiffres_apres_virgules }}</td>
+                <td>{{montant_Usufruit_negatif + (flux_Apres_Fiscalite_Haut() * duree_Demembrement) | deux_chiffres_apres_virgules }}</td>
 
             </tr>
-            <tbody>
+            </tbody>
 
         </table>
 
@@ -171,7 +173,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
 <script>
-
     let vm = new Vue({
         el: '#app',
         data: {
@@ -195,11 +196,9 @@
             amortissement_Usufruit: 0,
             is_A_Payer: 0,
             flux_Apres_Fiscalite: 0,
-            hypothese_Medium: 4.50,
+             hypothese_Medium: 4.50,
             hypothese_Basse: 4.00,
             hypothese_Haute: 4.75
-
-
         },
 
         methods :{
@@ -210,13 +209,31 @@
                     contientvaleur.push(valeur)
                 }
 
-                console.log(contientvaleur);
-// To calculate Amortization
-                // app[func].apply( this, args );
-              //var irree =   finance.IRR(-34874,contientvaleur);
                 var irree = finance.IRR.apply(this,contientvaleur);
-                console.log(irree);
                 return irree;
+            },
+            is_A_Payer_Haut: function(){
+                var rt= -((this.flux_Avant_Fiscalite/this.hypothese_Medium)*this.hypothese_Haute + this.amortissement_Usufruit ) * 0.3333;
+                return rt;
+            },
+
+            is_A_Payer_Bas: function(){
+                var rt= -((this.flux_Avant_Fiscalite/this.hypothese_Medium)*this.hypothese_Basse + this.amortissement_Usufruit ) * 0.3333;
+                return rt;
+            },
+
+            flux_Apres_Fiscalite_Haut: function () {
+                return ((this.flux_Avant_Fiscalite/this.hypothese_Medium)*this.hypothese_Haute + this.is_A_Payer_Haut());
+
+            },
+
+            flux_Apres_Fiscalite_Bas: function () {
+                return ((this.flux_Avant_Fiscalite/this.hypothese_Medium)*this.hypothese_Basse + this.is_A_Payer_Bas());
+
+            },
+            refresh: function(field)
+            {
+                field.value = field.value.replace(".",",");
             }
         },
 
@@ -231,16 +248,28 @@
             deux_chiffres_apres_virgules: function (valeur) {
                 return valeur.toFixed(2)
             },
+            remplacement: function (valeur) {
+                var str = ""+valeur;
 
+                var resultat = str.replace(".",",");
+                return resultat;
 
+            }
 
-
-
-
+        },
+        computed: {
+            tableauData: function () {
+                var tab=[];
+                tab.push(this.nom_Scpi);
+                tab.push(this.duree_Demembrement);
+                return tab;
+            }
         }
 
         /* components: { message } */
-    })
+    });
+
+
 </script>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

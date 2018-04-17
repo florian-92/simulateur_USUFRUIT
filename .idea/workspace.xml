@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="94a9dc62-3412-456a-8aac-2416a326e3fe" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/V1_usufruit.html" beforeDir="false" afterPath="$PROJECT_DIR$/V1_usufruit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/essamjoubori-finance.js-10df6b8/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/essamjoubori-finance.js-10df6b8/.travis.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/essamjoubori-finance.js-10df6b8/LICENSE-MIT" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/essamjoubori-finance.js-10df6b8/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/essamjoubori-finance.js-10df6b8/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/essamjoubori-finance.js-10df6b8/finance.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/essamjoubori-finance.js-10df6b8/finance.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/essamjoubori-finance.js-10df6b8/index.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/essamjoubori-finance.js-10df6b8/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/essamjoubori-finance.js-10df6b8/test/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/essamjoubori-finance.js-v4.0.1-1-g10df6b8.zip" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,8 +16,8 @@
       <file leaf-file-name="V1_usufruit.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/V1_usufruit.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="50" column="90" selection-start-line="50" selection-start-column="90" selection-end-line="50" selection-end-column="90" />
+            <state relative-caret-position="412">
+              <caret line="256" column="11" lean-forward="true" selection-start-line="256" selection-start-column="11" selection-end-line="256" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -47,20 +35,24 @@
     <findStrings>
       <find>monta</find>
       <find>tdv</find>
-      <find>cle_Repartition_Nue_Propriete</find>
       <find>acompte_Trimestriel</find>
       <find>dividende_Annuel_Part</find>
       <find>duree_Demembrement</find>
       <find>irr</find>
       <find>cle</find>
-      <find>hypothese_Medium</find>
       <find>tdvm_Previsionnel</find>
       <find>divi</find>
       <find>montant</find>
       <find>flux_Avant_Fiscalite</find>
-      <find>flux_Apres_Fiscalite</find>
       <find>montant_Usufruit_negatif</find>
       <find>montant_Usufruit</find>
+      <find>5</find>
+      <find>cle_Repartition_Nue_Propriete</find>
+      <find>montant_Nue_Propriete</find>
+      <find>hypothese_Medium</find>
+      <find>flux_Apres_Fiscalite</find>
+      <find>souscription_Divisible</find>
+      <find>conso</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -146,12 +138,20 @@
       <updated>1523608029723</updated>
       <workItem from="1523608030982" duration="12148000" />
       <workItem from="1523864736940" duration="9456000" />
-      <workItem from="1523889755724" duration="4682000" />
+      <workItem from="1523889755724" duration="14518000" />
     </task>
+    <task id="LOCAL-00001" summary="c'est samy qui reprend">
+      <created>1523950658324</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1523950658324</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26286000" />
+    <option name="totallyTimeSpent" value="36122000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -186,6 +186,10 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="c'est samy qui reprend" />
+    <option name="LAST_COMMIT_MESSAGE" value="c'est samy qui reprend" />
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/V1_usufruit.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -210,8 +214,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/V1_usufruit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="50" column="90" selection-start-line="50" selection-start-column="90" selection-end-line="50" selection-end-column="90" />
+        <state relative-caret-position="412">
+          <caret line="256" column="11" lean-forward="true" selection-start-line="256" selection-start-column="11" selection-end-line="256" selection-end-column="11" />
         </state>
       </provider>
     </entry>
